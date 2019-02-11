@@ -13,7 +13,7 @@ gulp.task('sass', () => {
     return gulp.src('./source/scss/**/*.scss')
         .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
         .pipe(rename('style.min.css'))
-        .pipe(gulp.dest('./build/css'))
+        .pipe(gulp.dest('./build/assets/css'))
         .pipe(livereload())
 });
 
@@ -35,7 +35,7 @@ gulp.task('uglify', () => {
     return gulp.src('./source/js/build/**/*.js')
         .pipe(rename('app.min.js'))
         .pipe(uglify())
-        .pipe(gulp.dest('./build/js'))
+        .pipe(gulp.dest('./build/assets/js'))
         .pipe(livereload())
 })
 
