@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+html(lang="pt-br")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        title HTML page builder helper
+        link(rel="stylesheet", href="./assets/css/style.min.css")
+    body
+        #app
+            main.main
+                .wrapper.space-c-100
+                    h1 {{title}}
+                    h2 #[strong Disclaimer]
+                    p This framework uses #[a(href="//github.com/pugjs/pug" target="_blank") pug] as default template engine and convert it to html file. It also uses #[a(href="//vuejs.org/" target="_blank") Vue] as default JS library. Feel free to change it if you want.
+                    br
+                    h2 #[strong Workflow]
+                    section.disclaimer
+                        h3 Directory structure
+                        p The #[span.code-dir root] contains two main directories: #[span.code-dir assets] and #[span.code-dir build]. The #[span.code-dir assets] directory is where all the compiled code for #[span.code .js] and #[span.code .css] goes to. In the #[span.code-dir root] you also have the #[span.code index.html] file, which is where you #[span.code .pug] file is compiled.
+                        p The #[span.code-dir source] directory is where you will work properly. Here you have a little structure to be easy to maintain the code more organized.
+                        br
+                        h3 The /source directory
+                        p > The #[span.code-dir js] dir is where you will place your #[span.code js] code. It have other two directories: #[span.code-dir build] and #[span.code-dir source]. The #[span.code-dir source] is where you will place the code itself. Here you can split you code into separate files, which is better to maintain it organized. The #[span.code-dir build] directory is where all code insde the #[span.code-dir source] dir is joined into only one code. It's the previous step before Gulp minify it and place it in the #[span.code-dir root/assets/js] directory.
+                        p > The #[span.code-dir scss] directory is where you will place all your #[span.code .scss] stylesheet files. All the structure is explained in the #[span.code style.scss] file.
+                        p > The #[span.code-dir view] directory is where you will place your #[span.code .pug] files, which will be compiled into #[span.code .html] files and placed in the #[span.code-dir root].
+                    br
+                    p This little framework was created to help me to build more efficient html templates to use it in projects such as wordpress websites, xtech eccomerce, static landing pages and so on. If you like it, please visit my #[a(href="https://hugolcouto.github.io/me/" target="_blank") portfolio page] and my #[a(href="https://github.com/hugolcouto" target="_blank") github]. Thanks!
+
+        script(src="//unpkg.com/vue")
+        script(src="./assets/js/app.min.js")

@@ -1,7 +1,38 @@
-// Modules
+/**
+ * GENERAL STYLE FILE
+ * 
+ * Import all other .scss files here. Place the files by priority order.
+ */
 
-
-// Partials
-
+/**
+ * The sass structure follows this article https://scotch.io/tutorials/aesthetic-sass-1-architecture-and-style-organization
+ * 
+ * scss
+ * |_style.scss
+ * |_ Vendor
+ * |   |_ (contains 3rd-party styles, mixins, etc.)
+ * |_Base
+ * |   |_(contains global styles, such as resets, typography, colors, etc.)
+ * |_Utils
+ * |   |_(contains global mixins, functions, helper selectors, etc.)
+ * |_Components
+ * |   |_(contains each self-contained component in its own .scss partial, e.g. buttons, forms, etc.)
+ * |_Layouts
+ *     |_(contains styling for larger layout components; e.g. nav, header, footer, etc.)
+ */
 
 // Vendor
+@import "./vendor/grid";
+
+// Base 
+@import "./base/fonts";
+@import "./base/colors";
+
+// Utils
+@import "./utils/reset";
+
+// Components
+
+
+// Layouts
+@import "./layouts/sample";

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>HTML page builder helper</title>
+    <link rel="stylesheet" href="./assets/css/style.min.css"/>
+  </head>
+  <body>
+    <div id="app">
+      <main class="main">
+        <div class="wrapper space-c-100">
+          <h1>{{title}}</h1>
+          <h2><strong>Disclaimer</strong></h2>
+          <p>This framework uses <a href="//github.com/pugjs/pug" target="_blank">pug</a> as default template engine and convert it to html file. It also uses <a href="//vuejs.org/" target="_blank">Vue</a> as default JS library. Feel free to change it if you want.</p><br/>
+          <h2><strong>Workflow</strong></h2>
+          <section class="disclaimer">
+            <h3>Directory structure</h3>
+            <p>The <span class="code-dir">root</span> contains two main directories: <span class="code-dir">assets</span> and <span class="code-dir">build</span>. The <span class="code-dir">assets</span> directory is where all the compiled code for <span class="code">.js</span> and <span class="code">.css</span> goes to. In the <span class="code-dir">root</span> you also have the <span class="code">index.html</span> file, which is where you <span class="code">.pug</span> file is compiled.</p>
+            <p>The <span class="code-dir">source</span> directory is where you will work properly. Here you have a little structure to be easy to maintain the code more organized.</p><br/>
+            <h3>The /source directory</h3>
+            <p>> The <span class="code-dir">js</span> dir is where you will place your <span class="code">js</span> code. It have other two directories: <span class="code-dir">build</span> and <span class="code-dir">source</span>. The <span class="code-dir">source</span> is where you will place the code itself. Here you can split you code into separate files, which is better to maintain it organized. The <span class="code-dir">build</span> directory is where all code insde the <span class="code-dir">source</span> dir is joined into only one code. It's the previous step before Gulp minify it and place it in the <span class="code-dir">root/assets/js</span> directory.</p>
+            <p>> The <span class="code-dir">scss</span> directory is where you will place all your <span class="code">.scss</span> stylesheet files. All the structure is explained in the <span class="code">style.scss</span> file.</p>
+            <p>> The <span class="code-dir">view</span> directory is where you will place your <span class="code">.pug</span> files, which will be compiled into <span class="code">.html</span> files and placed in the <span class="code-dir">root</span>.</p>
+          </section><br/>
+          <p>This little framework was created to help me to build more efficient html templates to use it in projects such as wordpress websites, xtech eccomerce, static landing pages and so on. If you like it, please visit my <a href="https://hugolcouto.github.io/me/" target="_blank">portfolio page</a> and my <a href="https://github.com/hugolcouto" target="_blank">github</a>. Thanks!</p>
+        </div>
+      </main>
+    </div>
+    <script src="//unpkg.com/vue"></script>
+    <script src="./assets/js/app.min.js"></script>
+  </body>
+</html>
