@@ -7,35 +7,42 @@ const livereload    = require('gulp-livereload');
 const webserver     = require('gulp-webserver');
 const concat        = require('gulp-concat');
 const pug           = require('gulp-pug');
-const clean         = require('gulp-clean');
+const imagemin      = require('gulp-imagemin');
 
 gulp.task('sass', () => {
     return gulp.src('./source/scss/**/*.scss')
         .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
         .pipe(rename('style.min.css'))
-        .pipe(gulp.dest('./assets/css'))
+        .pipe(gulp.dest('./build/assets/css'))
         .pipe(livereload())
 });
 
 gulp.task('pug', () => {
-    return gulp.src('./source/views/**/*.pug')
+    return gulp.src(['./source/views/**/*.pug'])
       .pipe(pug({pretty: true}))
-      .pipe(gulp.dest('.'))
+      .pipe(gulp.dest('./build'))
       .pipe(livereload())
-  });
+});
 
 gulp.task('concat', () => {
-    return gulp.src('./source/js/source/**/*.js')
+    return gulp.src(['./source/js/structure/open_jquery_tag.js', './source/js/scripts/**/*.js', './source/js/structure/close_jquery_tag.js'])
         .pipe(concat('app.js'))
-        .pipe(gulp.dest('./source/js/build'))
+        .pipe(gulp.dest('./source/js/compiled'))
         .pipe(livereload())
 });
 
 gulp.task('uglify', () => {
-    return gulp.src('./source/js/build/**/*.js')
+    return gulp.src('./source/js/compiled/**/*.js')
         .pipe(rename('app.min.js'))
         .pipe(uglify())
-        .pipe(gulp.dest('./assets/js'))
+        .pipe(gulp.dest('./build/assets/js'))
+        .pipe(livereload())
+})
+
+gulp.task('imagemin', () => {
+    gulp.src('./source/img/**/*')
+        .pipe(imagemin())
+        .pipe(gulp.dest('./build/assets/img'))
         .pipe(livereload())
 })
 
@@ -43,12 +50,12 @@ gulp.task('watch', () => {
     livereload.listen()
     gulp.watch('./source/scss/**/*.scss', gulp.parallel('sass'))
     gulp.watch('./source/views/**/*.pug', gulp.parallel('pug'))
-    gulp.watch('./source/js/source/**/*.js', gulp.parallel('concat'))
-    gulp.watch('./source/js/build/**/*.js', gulp.parallel('uglify'))
+    gulp.watch('./source/img/**/*', gulp.parallel('imagemin'))
+    gulp.watch('./source/js/scripts/**/*.js', gulp.series(['concat', 'uglify']))
 });
 
 gulp.task('webserver', () => {
-    gulp.src('.')
+    gulp.src('./build')
         .pipe(webserver({
             livereload: true,
             directoryListing: false,
@@ -56,8 +63,4 @@ gulp.task('webserver', () => {
         }));
 });
 
-gulp.task('clean', () => {
-    return gulp.src('**/*.txt', {read: false}).pipe(clean());
-});
-
-gulp.task('default', gulp.parallel('sass', 'pug', 'uglify', 'concat', 'watch', 'webserver', () => console.log("YOUR ARE RUNNING THE PROJECT IN DEVELOPMENT MODE. TO UPLOAD JUST THE PRODUCTION FILES, JUST ADD THE BUILD DIRECTORY ON GIT_IGNORE")));
+gulp.task('default', gulp.parallel('sass', 'pug', 'imagemin', 'uglify', 'concat', 'watch', 'webserver'));
