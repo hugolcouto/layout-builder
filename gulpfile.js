@@ -1,14 +1,14 @@
-const gulp          = require('gulp');
-const sass          = require('gulp-sass');
-const rename        = require('gulp-rename')
-const uglify        = require('gulp-uglify-es').default
-const watch         = require('gulp-watch');
-const livereload    = require('gulp-livereload');
-const webserver     = require('gulp-webserver');
-const concat        = require('gulp-concat');
-const pug           = require('gulp-pug');
-const imagemin      = require('gulp-imagemin');
-const replace       = require('gulp-string-replace');
+const   gulp            = require('gulp'),
+        sass            = require('gulp-sass'),
+        rename          = require('gulp-rename')
+        uglify          = require('gulp-uglify-es').defaul,
+        watch           = require('gulp-watch'),
+        livereload      = require('gulp-livereload'),
+        webserver       = require('gulp-webserver'),
+        concat          = require('gulp-concat'),
+        pug             = require('gulp-pug'),
+        imagemin        = require('gulp-imagemin'),
+        replace         = require('gulp-string-replace'),
 
 gulp.task('sass', () => {
     return gulp.src('./source/scss/**/*.scss')
