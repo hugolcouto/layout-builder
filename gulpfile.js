@@ -60,9 +60,10 @@ gulp.task('webserver', () => {
 });
 
 gulp.task('replacePhpTag', () => {
-    return gulp.src('./source/tmp/**/*.php')
-        .pipe(replace(new RegExp(/\(\(/, 'g'), '<?php'))
-        .pipe(replace(new RegExp(/\)\)/, 'g'), '?>'))
+    return gulp.src(['./source/tmp/**/*.php', '!./source/tmp/_layout/*.php'])
+        .pipe(replace('<php>', '<?php '))
+        .pipe(replace('<echo>', '<?= '))
+        .pipe(replace(new RegExp(/<\/php>|<\/echo>/, 'g'), ' ?>'))
         .pipe(gulp.dest('./build'))
         .pipe(livereload())
 })

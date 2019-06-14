@@ -1,5 +1,8 @@
-extends _layout/layout.pug
-block content
-    main
-        h1 Hello World
-        p (( echo "Hello World" ))
+php require('./header.php')
+main
+    h1 Hello World
+    p #[echo "Hello World"]
+    php for($i = 0; $i < 10; $i++) {
+        |   
+        |   echo "Hello World"; 
+        |}
