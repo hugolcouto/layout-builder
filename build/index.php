@@ -10,6 +10,7 @@
   <body>
     <main>
       <h1>Hello World</h1>
+      <p><?php echo "Hello World" ?></p>
     </main>
     <script src="//unpkg.com/jquery"></script>
     <script src="./assets/js/app.min.js"></script>

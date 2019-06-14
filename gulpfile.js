@@ -8,6 +8,7 @@ const webserver     = require('gulp-webserver');
 const concat        = require('gulp-concat');
 const pug           = require('gulp-pug');
 const imagemin      = require('gulp-imagemin');
+const replace       = require('gulp-string-replace');
 
 gulp.task('sass', () => {
     return gulp.src('./source/scss/**/*.scss')
@@ -18,9 +19,12 @@ gulp.task('sass', () => {
 });
 
 gulp.task('pug', () => {
-    return gulp.src(['./source/views/**/*.pug'])
+    return gulp.src('./source/views/**/*.pug')
       .pipe(pug({pretty: true}))
-      .pipe(gulp.dest('./build'))
+      .pipe(rename(path => {
+        path.extname = ".php"
+      }))
+      .pipe(gulp.dest('./source/tmp'))
       .pipe(livereload())
 });
 
@@ -46,14 +50,6 @@ gulp.task('imagemin', () => {
         .pipe(livereload())
 })
 
-gulp.task('watch', () => {
-    livereload.listen()
-    gulp.watch('./source/scss/**/*.scss', gulp.parallel('sass'))
-    gulp.watch('./source/views/**/*.pug', gulp.parallel('pug'))
-    gulp.watch('./source/img/**/*', gulp.parallel('imagemin'))
-    gulp.watch('./source/js/scripts/**/*.js', gulp.series(['concat', 'uglify']))
-});
-
 gulp.task('webserver', () => {
     gulp.src('./build')
         .pipe(webserver({
@@ -63,4 +59,20 @@ gulp.task('webserver', () => {
         }));
 });
 
-gulp.task('default', gulp.parallel('sass', 'pug', 'imagemin', 'uglify', 'concat', 'watch', 'webserver'));
+gulp.task('replacePhpTag', () => {
+    return gulp.src('./source/tmp/**/*.php')
+        .pipe(replace(new RegExp(/\(\(/, 'g'), '<?php'))
+        .pipe(replace(new RegExp(/\)\)/, 'g'), '?>'))
+        .pipe(gulp.dest('./build'))
+        .pipe(livereload())
+})
+
+gulp.task('watch', () => {
+    livereload.listen()
+    gulp.watch('./source/scss/**/*.scss', gulp.parallel('sass'))
+    gulp.watch('./source/views/**/*.pug', gulp.series(['pug', 'replacePhpTag']))
+    gulp.watch('./source/img/**/*', gulp.parallel('imagemin'))
+    gulp.watch('./source/js/scripts/**/*.js', gulp.series(['concat', 'uglify']))
+});
+
+gulp.task('default', gulp.parallel('sass', 'pug', 'imagemin', 'uglify', 'concat', 'replacePhpTag', 'watch', 'webserver'));
