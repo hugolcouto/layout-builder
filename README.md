@@ -1,7 +1,7 @@
 # Hello World!
 > Framework para desenvolvimento front-end utilizando pug e sass
 
-![] (https://raw.githubusercontent.com/hugolcouto/layout-builder/master/build/assets/img/open_source_gunter.png)
+![](https://raw.githubusercontent.com/hugolcouto/layout-builder/master/build/assets/img/open_source_gunter.png)
 
 Este projeto tem como finalidade ajudar no desenvolvimento de páginas estáticas em HTML ou PHP. É uma estrutura simples que agiliza o meu trabalho e pode ser que venha a ser útil para você também :D
 
