@@ -9,11 +9,6 @@
     <link rel="stylesheet" href="./assets/css/style.min.css"/>
   </head>
   <body>
-    <main>
-      <h1>
-        <?= "Hello World!"; ?>
-      </h1><img src="assets/img/open_source_gunter.png" alt=""/>
-    </main>
     <script src="//unpkg.com/jquery"></script>
     <script src="./assets/js/app.min.js"></script>
   </body>

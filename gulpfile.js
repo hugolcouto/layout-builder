@@ -61,6 +61,10 @@ gulp.task('imagemin', () => {
         .pipe(browserSync.stream())
 })
 
+gulp.task('clearImgDir', () => {
+    return gulp.src(config.outputIMGPath + "/*").pipe(clean())
+})
+
 gulp.task('connectPHP', () => {
     connectPHP.server({ base: config.serverBase }, () => {
         browserSync({
@@ -86,8 +90,8 @@ gulp.task('replacePhpTag', () => {
 gulp.task('watch', () => {
     gulp.watch('./source/scss/**/*.scss', gulp.parallel('sass')).on('change', browserSync.reload)
     gulp.watch('./source/views/**/*.pug', gulp.series(['pug', 'replacePhpTag', 'clearTmpDir'])).on('change', browserSync.reload)
-    gulp.watch('./source/img/**/*', gulp.parallel('imagemin')).on('change', browserSync.reload)
+    gulp.watch('./source/img/**/*', gulp.series('clearImgDir', 'imagemin')).on('change', browserSync.reload)
     gulp.watch('./source/js/scripts/**/*.js', gulp.series(['concat', 'uglify'])).on('change', browserSync.reload)
 });
 
-gulp.task('default', gulp.parallel('sass', 'pug', 'imagemin', 'uglify', 'concat', 'replacePhpTag', 'watch', 'connectPHP'));
+gulp.task('default', gulp.parallel('sass', 'pug', 'imagemin', 'uglify', 'concat', 'replacePhpTag', 'watch', 'connectPHP', 'clearTmpDir'));

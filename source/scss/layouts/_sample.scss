@@ -15,4 +15,7 @@ main {
         place-self: center;
         color: $color-mint;
     }
+    > img {
+        margin: 0 auto;
+    }
 }
