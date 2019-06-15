@@ -1,4 +1,4 @@
-# Hello World!
+# Template Builder
 > Framework para desenvolvimento front-end utilizando pug e sass
 
 ![](https://raw.githubusercontent.com/hugolcouto/layout-builder/master/build/assets/img/open_source_gunter.png)
@@ -9,23 +9,24 @@ Este projeto tem como finalidade ajudar no desenvolvimento de páginas estática
 O framework funciona com Pug, Sass e JS com Jquery. A estrutura roda com Gulp e é de fácil personalização. O arquivo `config.json` indica os caminhos de output dos arquivos compilados.
 
 Os diretórios seguem a seguinte estrutura:
-- `build`
-- `source`
-    - `img`
-    - `js`
-        - `compiled` 
-        - `scripts` 
-        - `structure`
-    - `scss`
-        - `base`
-        - `components`
-        - `layouts`
-        - `utils`
-        - `vendor`
-    - `tmp`
-    - `views`
-        - `_layout`
-
+```
+- build
+- source
+    - img
+    - js
+        - compiled 
+        - scripts 
+        - structure
+    - scss
+        - base
+        - components
+        - layouts
+        - utils
+        - vendor
+    - tmp
+    - views
+        - _layout
+```
 1. Todas os arquivos de imagens deve ser colocadas na pasta `./source/img`
 
 2. Arquivos de JavaScript dentro da pasta `./source/js/scripts`
