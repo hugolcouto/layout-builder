@@ -1,0 +1,7 @@
+{
+    "outputPUGExtension": ".php",
+    "outputJSPath": "./build/assets/js",
+    "outputIMGPath": "./build/assets/img",
+    "outputPUGFile": "./build",
+    "serverBase": "./build"
+}

@@ -1,3 +1,3 @@
 $(() => {
-console.log("Welcome!")
+console.log("Welctome!")
 })
