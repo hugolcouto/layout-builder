@@ -1,4 +1,4 @@
-# Template Builder
+# Layout Builder
 > Framework para desenvolvimento front-end utilizando pug e sass
 
 ![](https://raw.githubusercontent.com/hugolcouto/layout-builder/master/build/assets/img/open_source_gunter.png)
